@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+
+gcloud compute instances delete $GCRM_MACHINE_NAME --zone=$GCRM_ZONE

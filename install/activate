@@ -1,0 +1,42 @@
+# sourcing and checking input data
+source ./gcrm_config
+if [ -z "GCRM_MACHINE_TYPE" ]
+then
+    echo "GCRM_MACHINE_TYPE not set"
+    return 1
+fi
+if [ -z "GCRM_GITHUB_REPO_NAME" ]
+then
+    echo "GCRM_GITHUB_REPO_NAME not set"
+    return 1
+fi
+if [ -z "GCRM_ZONE" ]
+then
+    echo "GCRM_ZONE not set"
+    return 1
+fi
+
+
+export GCRM_ID=`date +%s`
+export GCRM_MACHINE_NAME=gcrm-machine-${GCRM_ID}
+
+
+export GCRM_LOCAL_GITHUB_PATH=$(PWD)
+export GCRM_GITHUB_REPO_NAME=$(basename $(PWD))
+export GCRM_GITHUB_BRANCH=git branch 2>/dev/null | grep '^*' | colrm 1 2
+
+# --image-family = tf2-latest-gpu | tf-2-1-cu100 | tf2-2-0-cu100
+if [[ $GCRM_MACHINE_TYPE = "CPU" ]]
+then
+    export GCRM_MACHINE_IMAGE_FAMILY=tf2-latest-cpu
+    export GCRM_MACHINE_START_OPTIONS=""
+elif [[ $GCRM_MACHINE_TYPE = "GPU" ]]
+then
+    export GCRM_MACHINE_IMAGE_FAMILY=tf-2-1-cu100
+    export GCRM_MACHINE_START_OPTIONS='--accelerator=type=nvidia-tesla-t4,count=1 --metadata=install-nvidia-driver=True'
+fi
+
+if [ ! -z "GCRM_SPECIAL_MACHINE_IMAGE_FAMILY" ]
+then
+    export GCRM_MACHINE_IMAGE_FAMILY=$GCRM_SPECIAL_MACHINE_IMAGE_FAMILY
+fi

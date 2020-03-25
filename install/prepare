@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+
+./gcrm_prepare_local $GCRM_MACHINE_NAME $GCRM_ZONE
+gcloud compute ssh $GCRM_MACHINE_NAME --zone=$GCRM_ZONE < ./gcrm_prepare_remote

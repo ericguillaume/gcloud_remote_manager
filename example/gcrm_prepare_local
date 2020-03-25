@@ -1,0 +1,6 @@
+args=("$@")
+MACHINE_NAME=${args[0]} 
+ZONE=${args[1]}
+
+# envoyer images
+gcloud compute scp /Users/eric/dev/data/AnimeFaceGAN.tar.gz ${MACHINE_NAME}:/tmp/AnimeFaceGAN.tar.gz --zone=${ZONE}

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+
+gcloud compute instances create $GCRM_MACHINE_NAME --zone=$GCRM_ZONE --image-project=deeplearning-platform-release --image-family=$GCRM_MACHINE_IMAGE_FAMILY --maintenance-policy=TERMINATE $GCRM_MACHINE_START_OPTIONS --preemptible

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export GCRM_MACHINE_TYPE=  # CPU GPU
+export GCRM_ZONE=  # europe-west2-c us-central1-b europe-west4-a
+
+export GCRM_SPECIAL_MACHINE_IMAGE_FAMILY=  # can be left empty

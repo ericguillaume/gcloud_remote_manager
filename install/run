@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+
+gcloud compute ssh $GCRM_MACHINE_NAME --zone=$GCRM_ZONE < ./gcrm_run_remote

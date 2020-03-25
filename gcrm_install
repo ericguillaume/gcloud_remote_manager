@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+mkdir -p $(PWD)/gcrm
+cp -r ${GCRM_PATH}/install/ $(PWD)/gcrm
+cp ${GCRM_PATH}/config/config_example $(PWD)/gcrm_config
+cp ${GCRM_PATH}/example/* $(PWD)/
