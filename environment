@@ -1,0 +1,19 @@
+export GCRM_MACHINE_TYPE=GPU  # CPU GPU
+export GCRM_GITHUB_REPO_NAME=Anime-Face-GAN-Keras
+export GCRM_GITHUB_BRANCH=master
+export GCRM_LOCAL_GITHUB_PATH=/Users/eric/dev/tutorials/Anime-Face-GAN-Keras ## USED ???
+export GCRM_ZONE=europe-west2-c  # europe-west4-a us-central1-b europe-west2-c
+
+export GCRM_ID=`date +%s`
+export GCRM_MACHINE_NAME=gcrm-machine-${GCRM_ID}
+
+# --image-family = tf2-latest-gpu | tf-2-1-cu100 | tf2-2-0-cu100
+if [[ $GCRM_MACHINE_TYPE = "CPU" ]]
+then
+    export GCRM_MACHINE_IMAGE_FAMILY=tf2-latest-cpu
+    export GCRM_MACHINE_START_OPTIONS=""
+elif [[ $GCRM_MACHINE_TYPE = "GPU" ]]
+then
+    export GCRM_MACHINE_IMAGE_FAMILY=tf-2-1-cu100
+    export GCRM_MACHINE_START_OPTIONS='--accelerator=type=nvidia-tesla-t4,count=1 --metadata=install-nvidia-driver=True'
+fi
