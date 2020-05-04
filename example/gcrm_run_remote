@@ -1,5 +1,5 @@
 source env/bin/activate
-export ANIME_FACE_GAN_DATA_DIR="/home/eric/dev/data/AnimeFaceGAN"
-cd /home/eric/Anime-Face-GAN-Keras
+export ANIME_FACE_GAN_DATA_DIR="${HOME}/dev/data/AnimeFaceGAN"
+cd ${HOME}/Anime-Face-GAN-Keras
 git pull origin --rebase
 python3 GAN_Trainingv3.py
