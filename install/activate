@@ -36,7 +36,7 @@ then
     export GCRM_MACHINE_START_OPTIONS='--accelerator=type=nvidia-tesla-t4,count=1 --metadata=install-nvidia-driver=True'
 fi
 
-if [ ! -z "GCRM_SPECIAL_MACHINE_IMAGE_FAMILY" ]
+if [ -z "GCRM_SPECIAL_MACHINE_IMAGE_FAMILY" ]
 then
     export GCRM_MACHINE_IMAGE_FAMILY=$GCRM_SPECIAL_MACHINE_IMAGE_FAMILY
 fi
